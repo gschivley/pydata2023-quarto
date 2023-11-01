@@ -28,10 +28,31 @@
     "text": "Body mass vs. flipper length\nFigure 1 the relationship between body mass and flipper length of penguins.\n\n\nCode\n# from https://github.com/mcnakhaee/palmerpenguins\ng = sns.lmplot(x=\"flipper_length_mm\",\n               y=\"body_mass_g\",\n               hue=\"species\",\n               height=7,\n               data=penguins,\n               palette=['#FF8C00','#159090','#A034F0'])\ng.set_xlabels('Flipper Length')\ng.set_ylabels('Body Mass')\n\n\n\n\n\n\n\n\nFigure 1: Body mass vs. flipper length of penguins"
   },
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "This is the contents of the about page for my blog."
+  },
+  {
+    "objectID": "about.html#about-this-blog",
+    "href": "about.html#about-this-blog",
+    "title": "About",
+    "section": "",
+    "text": "This is the contents of the about page for my blog."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Home",
     "section": "",
     "text": "This is the homepage for the website."
+  },
+  {
+    "objectID": "other-notebook.html",
+    "href": "other-notebook.html",
+    "title": "Other page",
+    "section": "",
+    "text": "Hi there\nThis is a test page\n\n\nCode\nimport altair as alt\nfrom vega_datasets import data\n\n\n\n\nCode\nsource = data.cars()\n\n# Brush for selection\nbrush = alt.selection_interval()\n\n# Scatter Plot\npoints = alt.Chart(source).mark_point().encode(\n    x='Horsepower:Q',\n    y='Miles_per_Gallon:Q',\n    color=alt.condition(brush, alt.value('steelblue'), alt.value('grey'))\n).add_params(brush)\n\n# Base chart for data tables\nranked_text = alt.Chart(source).mark_text(align='right').encode(\n    y=alt.Y('row_number:O').axis(None)\n).transform_filter(\n    brush\n).transform_window(\n    row_number='row_number()'\n).transform_filter(\n    alt.datum.row_number &lt; 15\n)\n\n# Data Tables\nhorsepower = ranked_text.encode(text='Horsepower:N').properties(\n    title=alt.Title(text='Horsepower', align='right')\n)\nmpg = ranked_text.encode(text='Miles_per_Gallon:N').properties(\n    title=alt.Title(text='MPG', align='right')\n)\norigin = ranked_text.encode(text='Origin:N').properties(\n    title=alt.Title(text='Origin', align='right')\n)\ntext = alt.hconcat(horsepower, mpg, origin) # Combine data tables\n\n# Build chart\nalt.hconcat(\n    points,\n    text\n).resolve_legend(\n    color=\"independent\"\n).configure_view(\n    stroke=None\n)"
   }
 ]

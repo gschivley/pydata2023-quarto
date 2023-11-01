@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://gschivley.github.io/pydata2023-quarto/hello-penguins.html</loc>
+    <lastmod>2023-11-01T14:07:36.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gschivley.github.io/pydata2023-quarto/about.html</loc>
+    <lastmod>2023-11-01T14:17:19.985Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gschivley.github.io/pydata2023-quarto/index.html</loc>
+    <lastmod>2023-11-01T13:58:28.925Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gschivley.github.io/pydata2023-quarto/other-notebook.html</loc>
+    <lastmod>2023-11-01T14:14:04.038Z</lastmod>
+  </url>
+</urlset>
