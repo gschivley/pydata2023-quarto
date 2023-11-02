@@ -1,28 +1,49 @@
 [
   {
-    "objectID": "hello-penguins.html",
-    "href": "hello-penguins.html",
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "Blog",
+    "section": "",
+    "text": "Other page\n\n\n\n\n\n\n\n\n\n\n\nGreg\n\n\n\n\n\n\n\n\n\n\n\n\nHello, Penguins!\n\n\n\n\n\n\n\n\n\n\n\nGreg\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Home",
+    "section": "",
+    "text": "This is the homepage for the website."
+  },
+  {
+    "objectID": "posts/other-notebook.html",
+    "href": "posts/other-notebook.html",
+    "title": "Other page",
+    "section": "",
+    "text": "Hi there\nThis is a test page\n\n\nCode\nimport altair as alt\nfrom vega_datasets import data\n\n\n\n\nCode\nsource = data.cars()\n\n# Brush for selection\nbrush = alt.selection_interval()\n\n# Scatter Plot\npoints = alt.Chart(source).mark_point().encode(\n    x='Horsepower:Q',\n    y='Miles_per_Gallon:Q',\n    color=alt.condition(brush, alt.value('steelblue'), alt.value('grey'))\n).add_params(brush)\n\n# Base chart for data tables\nranked_text = alt.Chart(source).mark_text(align='right').encode(\n    y=alt.Y('row_number:O').axis(None)\n).transform_filter(\n    brush\n).transform_window(\n    row_number='row_number()'\n).transform_filter(\n    alt.datum.row_number &lt; 15\n)\n\n# Data Tables\nhorsepower = ranked_text.encode(text='Horsepower:N').properties(\n    title=alt.Title(text='Horsepower', align='right')\n)\nmpg = ranked_text.encode(text='Miles_per_Gallon:N').properties(\n    title=alt.Title(text='MPG', align='right')\n)\norigin = ranked_text.encode(text='Origin:N').properties(\n    title=alt.Title(text='Origin', align='right')\n)\ntext = alt.hconcat(horsepower, mpg, origin) # Combine data tables\n\n# Build chart\nalt.hconcat(\n    points,\n    text\n).resolve_legend(\n    color=\"independent\"\n).configure_view(\n    stroke=None\n)\n\n\n\n\n\n\n\n\n\n\nCode\nsource = data.us_employment()\n\nalt.Chart(source).mark_bar().encode(\n    x=\"month:T\",\n    y=\"nonfarm_change:Q\",\n    color=alt.condition(\n        alt.datum.nonfarm_change &gt; 0,\n        alt.value(\"steelblue\"),  # The positive color\n        alt.value(\"orange\")  # The negative color\n    ),\n    tooltip=\"private\"\n\n).properties(width=600)\n\n\n\n\n\n\n\n\n\n\nCode\nsource\n\n\n\n\n\n\n\n\n\nmonth\nnonfarm\nprivate\ngoods_producing\nservice_providing\nprivate_service_providing\nmining_and_logging\nconstruction\nmanufacturing\ndurable_goods\n...\ntransportation_and_warehousing\nutilities\ninformation\nfinancial_activities\nprofessional_and_business_services\neducation_and_health_services\nleisure_and_hospitality\nother_services\ngovernment\nnonfarm_change\n\n\n\n\n0\n2006-01-01\n135450\n113603\n22467\n112983\n91136\n656\n7601\n14210\n8982\n...\n4420.0\n549.8\n3052\n8307\n17299\n17946\n12945\n5425\n21847\n282\n\n\n1\n2006-02-01\n135762\n113884\n22535\n113227\n91349\n662\n7664\n14209\n8986\n...\n4429.4\n550.1\n3052\n8332\n17365\n17998\n12980\n5426\n21878\n312\n\n\n2\n2006-03-01\n136059\n114156\n22572\n113487\n91584\n669\n7689\n14214\n9000\n...\n4429.7\n547.5\n3055\n8348\n17438\n18045\n13034\n5425\n21903\n297\n\n\n3\n2006-04-01\n136227\n114308\n22631\n113596\n91677\n679\n7726\n14226\n9020\n...\n4445.4\n548.9\n3046\n8369\n17462\n18070\n13074\n5426\n21919\n168\n\n\n4\n2006-05-01\n136258\n114332\n22597\n113661\n91735\n681\n7713\n14203\n9017\n...\n4459.4\n548.3\n3039\n8376\n17512\n18100\n13052\n5433\n21926\n31\n\n\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n\n\n115\n2015-08-01\n142156\n120084\n19628\n122528\n100456\n797\n6485\n12346\n7774\n...\n4903.8\n557.8\n2754\n8146\n19697\n22093\n15201\n5619\n22072\n164\n\n\n116\n2015-09-01\n142244\n120203\n19622\n122622\n100581\n779\n6498\n12345\n7770\n...\n4910.9\n556.7\n2761\n8152\n19717\n22138\n15263\n5620\n22041\n88\n\n\n117\n2015-10-01\n142595\n120536\n19669\n122926\n100867\n771\n6540\n12358\n7768\n...\n4903.0\n555.9\n2768\n8168\n19791\n22217\n15324\n5629\n22059\n351\n\n\n118\n2015-11-01\n142859\n120775\n19701\n123158\n101074\n755\n6592\n12354\n7753\n...\n4924.7\n556.6\n2754\n8181\n19835\n22263\n15366\n5638\n22084\n264\n\n\n119\n2015-12-01\n143093\n120993\n19737\n123356\n101256\n745\n6632\n12360\n7747\n...\n4950.9\n556.5\n2762\n8188\n19892\n22318\n15408\n5652\n22100\n234\n\n\n\n\n120 rows × 24 columns"
+  },
+  {
+    "objectID": "posts/hello-penguins.html",
+    "href": "posts/hello-penguins.html",
     "title": "Hello, Penguins!",
     "section": "",
     "text": "Meet the Palmer Penguins!!\n\n\nFor this analysis we’ll use a few packages for visualization and data display.\n\n\nCode\nimport pandas as pd\nimport seaborn as sns \nfrom IPython.display import Markdown\n\nsns.set_style('whitegrid')\n\n\n\n\n\nThe dataset we’ll use comes from the palmerpenguins package.\n\n\nCode\nfrom palmerpenguins import load_penguins\n\npenguins = load_penguins()\n\n\nThis dataset contains size measurements, clutch observations, and blood isotope ratios for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica.\nLet’s take a peek at the data. Table 1 shows the first five rows of the penguins data frame.\n\n\nCode\nMarkdown(penguins.head().to_markdown(index=False))\n\n\n\n\nTable 1: First five rows of the penguins data frame.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nnan\nnan\nnan\nnan\nnan\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007"
   },
   {
-    "objectID": "hello-penguins.html#packages",
-    "href": "hello-penguins.html#packages",
+    "objectID": "posts/hello-penguins.html#packages",
+    "href": "posts/hello-penguins.html#packages",
     "title": "Hello, Penguins!",
     "section": "",
     "text": "For this analysis we’ll use a few packages for visualization and data display.\n\n\nCode\nimport pandas as pd\nimport seaborn as sns \nfrom IPython.display import Markdown\n\nsns.set_style('whitegrid')"
   },
   {
-    "objectID": "hello-penguins.html#data",
-    "href": "hello-penguins.html#data",
+    "objectID": "posts/hello-penguins.html#data",
+    "href": "posts/hello-penguins.html#data",
     "title": "Hello, Penguins!",
     "section": "",
     "text": "The dataset we’ll use comes from the palmerpenguins package.\n\n\nCode\nfrom palmerpenguins import load_penguins\n\npenguins = load_penguins()\n\n\nThis dataset contains size measurements, clutch observations, and blood isotope ratios for 344 adult foraging Adélie, Chinstrap, and Gentoo penguins observed on islands in the Palmer Archipelago near Palmer Station, Antarctica.\nLet’s take a peek at the data. Table 1 shows the first five rows of the penguins data frame.\n\n\nCode\nMarkdown(penguins.head().to_markdown(index=False))\n\n\n\n\nTable 1: First five rows of the penguins data frame.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\nisland\nbill_length_mm\nbill_depth_mm\nflipper_length_mm\nbody_mass_g\nsex\nyear\n\n\n\n\nAdelie\nTorgersen\n39.1\n18.7\n181\n3750\nmale\n2007\n\n\nAdelie\nTorgersen\n39.5\n17.4\n186\n3800\nfemale\n2007\n\n\nAdelie\nTorgersen\n40.3\n18\n195\n3250\nfemale\n2007\n\n\nAdelie\nTorgersen\nnan\nnan\nnan\nnan\nnan\n2007\n\n\nAdelie\nTorgersen\n36.7\n19.3\n193\n3450\nfemale\n2007"
   },
   {
-    "objectID": "hello-penguins.html#body-mass-vs.-flipper-length",
-    "href": "hello-penguins.html#body-mass-vs.-flipper-length",
+    "objectID": "posts/hello-penguins.html#body-mass-vs.-flipper-length",
+    "href": "posts/hello-penguins.html#body-mass-vs.-flipper-length",
     "title": "Hello, Penguins!",
     "section": "Body mass vs. flipper length",
     "text": "Body mass vs. flipper length\nFigure 1 the relationship between body mass and flipper length of penguins.\n\n\nCode\n# from https://github.com/mcnakhaee/palmerpenguins\ng = sns.lmplot(x=\"flipper_length_mm\",\n               y=\"body_mass_g\",\n               hue=\"species\",\n               height=7,\n               data=penguins,\n               palette=['#FF8C00','#159090','#A034F0'])\ng.set_xlabels('Flipper Length')\ng.set_ylabels('Body Mass')\n\n\n\n\n\n\n\n\nFigure 1: Body mass vs. flipper length of penguins"
@@ -40,19 +61,5 @@
     "title": "About",
     "section": "",
     "text": "This is the contents of the about page for my blog."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Home",
-    "section": "",
-    "text": "This is the homepage for the website."
-  },
-  {
-    "objectID": "other-notebook.html",
-    "href": "other-notebook.html",
-    "title": "Other page",
-    "section": "",
-    "text": "Hi there\nThis is a test page\n\n\nCode\nimport altair as alt\nfrom vega_datasets import data\n\n\n\n\nCode\nsource = data.cars()\n\n# Brush for selection\nbrush = alt.selection_interval()\n\n# Scatter Plot\npoints = alt.Chart(source).mark_point().encode(\n    x='Horsepower:Q',\n    y='Miles_per_Gallon:Q',\n    color=alt.condition(brush, alt.value('steelblue'), alt.value('grey'))\n).add_params(brush)\n\n# Base chart for data tables\nranked_text = alt.Chart(source).mark_text(align='right').encode(\n    y=alt.Y('row_number:O').axis(None)\n).transform_filter(\n    brush\n).transform_window(\n    row_number='row_number()'\n).transform_filter(\n    alt.datum.row_number &lt; 15\n)\n\n# Data Tables\nhorsepower = ranked_text.encode(text='Horsepower:N').properties(\n    title=alt.Title(text='Horsepower', align='right')\n)\nmpg = ranked_text.encode(text='Miles_per_Gallon:N').properties(\n    title=alt.Title(text='MPG', align='right')\n)\norigin = ranked_text.encode(text='Origin:N').properties(\n    title=alt.Title(text='Origin', align='right')\n)\ntext = alt.hconcat(horsepower, mpg, origin) # Combine data tables\n\n# Build chart\nalt.hconcat(\n    points,\n    text\n).resolve_legend(\n    color=\"independent\"\n).configure_view(\n    stroke=None\n)"
   }
 ]
